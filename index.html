@@ -16,15 +16,51 @@
     <title>Flora</title>
 </head>
 <body>
-    <body class="banner">
-    <div class="navbar">
-        <img src="logo2.png" class="logo">
-        <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">To-Do List </a></li>
-          <li><a href="">Pomodoro Clock</a></li>
-          <li><a href="">Timer</a></li>
-          <li><a href="">Alarm </a></li>
-        </ul>
+  <div class="container">
+    <div class="wrapper">
+       <div class="loader">
+          <div class="dot"></div>
+       </div>
+       <div class="loader">
+          <div class="dot"></div>
+       </div>
+       <div class="loader">
+          <div class="dot"></div>
+       </div>
+       <div class="loader">
+          <div class="dot"></div>
+       </div>
+       <div class="loader">
+          <div class="dot"></div>
+       </div>
+       <div class="loader">
+          <div class="dot"></div>
+       </div>
     </div>
+    <div class="text">
+       Please wait
+    </div>
+ </div>
+
+<div class="banner">
+  <div class="navbar">
+      <img src="bg.png" class="logo">
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">To-Do List </a></li>
+        <li><a href="/Pomodoro/index.html">Pomodoro Clock</a></li>
+        <li><a href="">Timer</a></li>
+        <li><a href="/Alarm Clock/index.html">Alarm </a></li>
+      </ul>
+  </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+      setTimeout(function(){
+          $('.loader_bg').fadeToggle();
+      }, 1500);
+  </script>
+
+</div>
 </body>
+</html>
