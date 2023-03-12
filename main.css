@@ -95,7 +95,7 @@
   .banner{
     width: 100%;
     height: 160rem;
-    background-image:linear-gradient(rgba(22,55,88),rgba(0,0,0,0.75));
+    background-image:linear-gradient(rgba(22,55,88),rgba(0,0,0,0.75),url(some.jpg));
     background-size: cover;
   }
   .logo{
