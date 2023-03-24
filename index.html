@@ -5,43 +5,193 @@
     <link rel="stylesheet" href="main.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/x-icon"href="images/favicon.ico"> 
+  <link rel="icon" type="image/x-icon"href="D:\Files\Websites\Prodactiv\Prodactiv\Favi\logo2.ico">
     <title>Prodactiv</title>
 </head>
 <body >
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap');
 
-   <div class="loader_bg">
-      <div class="loader"></div>
-  </div>
-
- <div class="banner">
+  </style>
+  <script>
+  
+    const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+  
+  hamburger.addEventListener("click", mobileMenu);
+  
+  function mobileMenu() {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+  }
+  
+  const navLink = document.querySelectorAll(".nav-link");
+  
+  navLink.forEach(n => n.addEventListener("click", closeMenu));
+  
+  function closeMenu() {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("active");
+  }
+  </script>
+  
+   <canvas class="container" id="container" role="main"></canvas>
    <div class="navbar">
-       <img src="bg.png" class="logo">
-       <ul>
-         <li><a href="">Home</a></li>
-         <li><a href="">To-Do List </a></li>
-         <li><a href="/Pomodoro/index.html">Pomodoro Clock</a></li>
-         <li><a href="">Timer</a></li>
-         <li><a href="/Alarm Clock/index.html">Alarm </a></li>
+       <img src="logo2.png" class="logo">
+       <ul class="nav-menu">
+         <li class="nav-item"><a href="">Home</a></li>
+         <li class="nav-item"><a href="">To-Do List </a></li>
+         <li class="nav-item"><a href="D:/Files/Websites/Prodactiv/Prodactiv/Pomodoro/pomodoro-timer.html">Pomodoro Clock</a></li>
+         <li class="nav-item"><a href="">Timer</a></li>
+         <li class="nav-item"><a href="/Alarm Clock/alarm.html">Alarm </a></li>
        </ul>
    </div>
-   </div>
+   <div class="animate__animated animate__bounceIn">
+    <div class="text-box" >
+      <h1>Welcome To<span class="auto-input">,</span></h1>
+      
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+      <script>
+      var typed = new Typed(".auto-input", 
+      {strings:[ , "  </br> Prodactiv!" , " </br> Productivity!" , ],
+         typeSpeed:100,
+         backSpeed:90,
+         loop:true})
+         </script>
+         </div>
+         </div>
+         
+         <div class='btn-holder'>
+  <button class="btn btn-3 hover-border-1">
+    <span>hover me</span>
+  </button>
+  </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script>
-      setTimeout(function(){
-          $('.loader_bg').fadeToggle();
-      }, 1500);
-  </script>
+
 <div class="blur blurTop"><canvas class="canvas"id="blurCanvasTop"></canvas></div>
 <div class="blur blurBottom"><canvas width="1000px" height="1000px" class="canvas" id="blurCanvasBottom"></canvas></div>
+
+
+<script>
+var canvas = document.getElementById('container');
+   var clone = document.getElementById('blurCanvasBottom');
+   
+   var cloneCtx = clone.getContext('2d');
+   var ctx = canvas.getContext('2d');
+   
+   
+   var w = $('#blurCanvasTop').width();
+   var h = $('#blurCanvasTop').height();
+   
+   var ww = $(window).width();
+   var wh = $(window).height();
+   canvas.width = ww;
+   canvas.height= wh;
+   var partCount = 100;
+   var particles = [];
+   
+   function particle(){
+     this.color = 'rgba(255,255,255,'+ Math.random()+')';
+     console.log(this.color);
+     this.x = randomInt(0,ww);
+     this.y = randomInt(0,wh);
+     this.direction = {
+       "x": -1 + Math.random() * 2,
+       "y": -1 + Math.random() * 2
+     };
+     this.vx = 0.3 * Math.random();
+     this.vy = 0.3 * Math.random();
+     this.radius = randomInt(2,3);
+     this.float = function(){
+       this.x += this.vx * this.direction.x;
+       this.y += this.vy * this.direction.y;
+     };
+     this.changeDirection = function (axis) {
+       this.direction[axis] *= -1;
+     };
+     this.boundaryCheck = function () {
+               if (this.x >= ww) {
+                   this.x = ww;
+                   this.changeDirection("x");
+               } else if (this.x <= 0) {
+                   this.x = 0;
+                   this.changeDirection("x");
+               }
+               if (this.y >= wh) {
+                   this.y = wh;
+                   this.changeDirection("y");
+               } else if (this.y <= 0) {
+                   this.y = 0;
+                   this.changeDirection("y");
+               }
+           };
+     this.draw = function () {
+       ctx.beginPath();
+       ctx.fillStyle = this.color;
+       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+       ctx.fill();
+     };
+   }
+   function clearCanvas() {
+    cloneCtx.clearRect(0, 0, ww, wh);
+    ctx.clearRect(0, 0, ww, wh);
+   }
+   function createParticles(){
+     for (i=0;i<partCount;i++){
+       var p = new particle();
+       particles.push(p);
+     }
+   }
+   function drawParticles() {
+      for (i=0;i<particles.length;i++) {
+        p = particles[i];
+        p.draw();
+      }
+   }
+   function updateParticles() {
+           for (var i = particles.length - 1; i >= 0; i--) {
+               p = particles[i];
+               p.float();
+               p.boundaryCheck();
+           }
+   }
+   createParticles();
+   drawParticles();
+   function animateParticles() {
+           clearCanvas();
+           drawParticles();
+           updateParticles();
+           cloneCtx.drawImage(canvas, 0, 0);
+           requestAnimationFrame(animateParticles);
+       }
+   requestAnimationFrame(animateParticles);
+   cloneCtx.drawImage(canvas, 0, 0);
+   
+   $(window).on('resize',function(){
+     ww = $(window).width();
+     wh = $(window).height();
+     canvas.width = ww;
+     canvas.height= wh;
+     clearCanvas();
+     particles = [];
+     createParticles();
+     drawParticles();
+   });
+   function randomInt(min,max)
+   {
+       return Math.floor(Math.random()*(max-min+1)+min);
+   }
+   function velocityInt(min,max)
+   {
+       return Math.random()*(max-min+1)+min;
+   }
+   </script>
 </div>
 </body>
 </html>
