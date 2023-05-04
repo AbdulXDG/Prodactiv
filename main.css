@@ -4,15 +4,26 @@
     box-sizing: border-box;
     font-family: 'Quicksand' , sans-serif;
   }
- html,body,#particles-js {
+ html,body{
     font-family: Raleway;
     overflow:hidden;
     width:100%;
-    height:100%;
+    min-height:100%;
     position:absolute;
-    
+    background-size: cover;
     background: linear-gradient(150deg, rgba(91,10,238,1) 0%, rgba(131,79,226,0.9781553398058253) 35%, rgba(16,197,233,1) 85%);
-    
+
+  }
+  #particles-js {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+  .body-particles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
   }
   header {
     display: flex;
@@ -144,7 +155,6 @@
     transform-origin: 100% 0%;
   }
   .text-box{
-
     margin-top: 5%;
     font-size:17px;
     letter-spacing: 1;
@@ -196,7 +206,7 @@
     margin: 10px auto 35px;
   }
   .btn {
-    position: relative;
+    position: fixed;
     display: inline-block;
     width: auto; height: auto;
     background-color: transparent;

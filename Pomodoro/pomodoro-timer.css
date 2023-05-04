@@ -45,6 +45,7 @@
               display: flex;
               align-items: center;
               justify-content: space-between;
+              z-index: 10000;
             }
             .logo{
               width: 120px;
@@ -197,6 +198,7 @@
               left:0%;
               top:0%;
               position:absolute;
+              z-index: -10000;
             }
             #blurCanvasBottom{
               left:50%;
